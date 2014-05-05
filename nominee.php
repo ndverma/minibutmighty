@@ -22,23 +22,21 @@ else{
 <head>
 <meta charset="utf-8">
 <title>Nominee PopUp</title>
+<link rel="stylesheet" href="colorbox/colorbox.css">
 <link href="css/master.css" rel="stylesheet" media="screen">
-<script src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
-<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="js/common.js" ></script>
 </head>
 
 <body>
 <!--container start-->
-	<section id="content_1" class="nominee-pop-content">
-  		  		<aside class="nominee-content-left float-left">
+	<section id="content_2" class="nominee-pop-content">
+           
+  		  	<aside class="nominee-content-left float-left">
                 	<aside class="pop-up-img-content">
-                    	<img src="<?php echo SITEURL;?>/images/nominee/<?php echo $nominee['img'];?>" width="225" alt="">
+                    	<img src="<?php echo SITEURL;?>/images/nominee/<?php echo $nominee['img'];?>" width="225" height="250" alt="">
                     </aside>
                     <aside class="pop-up-arrows">
-                    	<a href="#" class="arrow-left"></a>
-                        <a href="#" class="arrow-right"></a>                        
+                    	<a href="#" class="arrow-left" onclick="prev()"></a>
+                        <a href="#" class="arrow-right" onclick="next()"></a>                        
                     </aside>
                 </aside>
                 <aside class="nominee-content-right float-left">
@@ -56,3 +54,45 @@ else{
  <!--container start-->
 </body>
 </html>
+<script>
+    function prev()
+    {
+        if(jQuery(window.parent.document).find("#cboxPrevious").length){
+            var prev = jQuery(window.parent.document).find("#cboxPrevious");
+            jQuery(prev).trigger('click');
+            
+        }
+        
+                
+    }
+    
+    function next()
+    {
+        if(jQuery(window.parent.document).find("#cboxNext").length){
+            var prev = jQuery(window.parent.document).find("#cboxNext");
+            jQuery(prev).trigger('click');
+            
+        }
+        
+        
+    }
+    
+    function closepopup()
+    {
+       if(jQuery(window.parent.document).find("#cboxClose").length){
+            var prev = jQuery(window.parent.document).find("#cboxClose");
+            jQuery(prev).trigger('click');
+        }
+    }
+    
+    /*$("div.nominatee-decription").ready(function(){
+        $("#content_2").mCustomScrollbar(
+		{
+					scrollButtons:{enable:true},
+					advanced:{ updateOnContentResize: true}
+					
+				});
+    })*/
+    
+    
+</script>

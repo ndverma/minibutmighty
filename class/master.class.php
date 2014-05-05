@@ -4,9 +4,9 @@ session_start();
 <?php
 define("LINK","www.mbm.dev");
 define("URI","www.mbm.dev");
-define("PICTURE","http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg");
-define("API_NAME","This is demo Name use for Facebook Feed Dialog");
-define("CAPTION","This is Demo Caption");
+define("PICTURE","http://202.131.112.106:8880/minibutmighty/images/mini-mighty-logo.png");
+define("TITLE","“Mini Acts, Mighty Impact” Contest");
+define("CAPTION","To celebrate the mini acts that make a difference every day, Auntie Anneʼs is asking fans to nominate someone who has performed a Mini Act with a Mighty Impact.");
 define("DEFAULT_CAMP",1);
 define("ADMINUSER",'admin');
 define("ADMINPASS",'Admin@123');
@@ -170,6 +170,31 @@ class master
             return $row;
 		
         }
+        
+        public function get_finalists($cid){
+            $query = "SELECT * FROM nominees where campaign_id = ".$cid." AND status = 'F'";
+            $result = mysql_query($query);
+            while($row = mysql_fetch_assoc($result))
+            {
+                    $all_finalists[] = $row;
+            }
+            return $all_finalists;
+		
+        }
+        
+        public function add_vote($id){
+            $query = "INSERT INTO `votes`(`vote_for`, `added`) VALUES (".$id.",NOW())";
+            $result = mysql_query($query);
+            return $result;
+        }
+        
+        public function get_votes($id){
+            $query = "SELECT count(*) from votes where vote_for =".$id;
+            $result = mysql_query($query);
+            $row = mysql_fetch_assoc($result);
+            return $row['count(*)'];
+        }
+                
 }
 ?>
 

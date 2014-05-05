@@ -11,6 +11,7 @@ if(!isset($_SESSION['twttxt']))
     $session = 0;
 }else{
     $twttxt = $_SESSION['twttxt'];
+    $fbtxt = $_SESSION['fbtxt'];
     session_destroy();
 }
 
@@ -88,9 +89,9 @@ if(isset($_GET['code']))
         method: 'feed',
         link: "<?php echo SITEURL;?>",
         picture: "<?php echo PICTURE;?>",
-        name: "<?php echo API_NAME;?>",
+        name: "<?php echo TITLE;?>",
         caption: "<?php echo CAPTION;?>",
-        description: "<?php echo $twttxt;?>"
+        description: "<?php echo $fbtxt;?>"
     };
 
     function callback(response) {
@@ -116,6 +117,8 @@ if(isset($_GET['code']))
 
 	return false;
     });
+    
+    
 
 </script>
 <!-- Facebook Share End -->

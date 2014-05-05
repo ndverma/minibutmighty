@@ -81,9 +81,11 @@ if(isset($_POST['save']))
                         if($nomination_status){
                             $save_msg = "<center>Nominee : ".$nname." Saved Succesfully by :".$name."</center>";
                             $option_value = $object->get_option_value($option);
-                            $twttxt = "I nominated @".$ntwitter." in @AuntieAnnes Mini Acts,Mighty Impact #Contest - ".$option_value;
+                            $twttxt = "I nominated @".$ntwitter." in @AuntieAnnes Mini Acts,Mighty Impact Contest - ".$option_value;
+                            $fbtxt = "I nominated ".$nname." in AuntieAnnes Mini Acts,Mighty Impact Contest - ".$option_value;
                             $_SESSION['save_msg'] = $save_msg;
                             $_SESSION['twttxt'] = $twttxt;
+                            $_SESSION['fbtxt'] = $fbtxt;
                             header("location:".SITEURL."/thankyou.php");
                         }else {
                             echo "<p class='text-center error-msg'>Error Occured Nominee Not Saved Please try Again.</p>";
